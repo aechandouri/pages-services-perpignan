@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serrurier Perpignan — Pages Services | Dépannage 24h/7j Villeneuve-la-Rivière</title>
+  <meta name="description" content="Vincent Pages, artisan serrurier & électricien certifié à Villeneuve-la-Rivière (66). Dépannage urgence, ouverture de porte, changement de serrure. Perpignan et alentours. Devis gratuit." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 950: '#040D1A', 900: '#0A1628', 800: '#0F1F3D', 700: '#1E293B', 600: '#2D3F5C' },
+            orange: { 600: '#EA580C', 500: '#F97316', 400: '#FB923C', 300: '#FED7AA' }
+          },
+          fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #0A1628; background: #ffffff; }
+
+    /* === HERO === */
+    .hero-bg {
+      background-color: #040D1A;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 20% 50%, rgba(234,88,12,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(30,41,59,0.8) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(1); opacity: 0.8; }
+      70%  { transform: scale(1.15); opacity: 0; }
+      100% { transform: scale(1.15); opacity: 0; }
+    }
+    @keyframes badge-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); }
+      50%       { box-shadow: 0 0 0 8px rgba(249,115,22,0); }
+    }
+    .fade-up { animation: fadeUp 0.6s ease forwards; }
+    .delay-1 { animation-delay: 0.15s; opacity: 0; }
+    .delay-2 { animation-delay: 0.3s;  opacity: 0; }
+    .delay-3 { animation-delay: 0.45s; opacity: 0; }
+    .delay-4 { animation-delay: 0.6s;  opacity: 0; }
+
+    .pulse-ring::before {
+      content: '';
+      position: absolute; inset: -4px;
+      border-radius: 50%;
+      border: 2px solid #F97316;
+      animation: pulse-ring 2s ease-out infinite;
+    }
+
+    /* === NAVBAR === */
+    .navbar { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+    /* === BUTTONS === */
+    .btn-primary {
+      background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+      transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,0.4); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-ghost {
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: border-color 150ms ease, background 150ms ease;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); }
+
+    /* === CARDS === */
+    .service-card {
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(10,22,40,0.12); }
+
+    .review-card {
+      transition: transform 200ms ease;
+    }
+    .review-card:hover { transform: translateY(-2px); }
+
+    /* === URGENCE STRIP === */
+    .urgence-strip {
+      background: linear-gradient(90deg, #EA580C 0%, #F97316 50%, #EA580C 100%);
+    }
+
+    /* === SECTION DIVIDER === */
+    .section-label {
+      letter-spacing: 0.1em;
+    }
+
+    /* === ICON CIRCLE === */
+    .icon-circle {
+      background: linear-gradient(135deg, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.08) 100%);
+    }
+
+    /* === STAT CARD === */
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    /* === ZONE BADGE === */
+    .zone-badge {
+      transition: background 150ms ease, color 150ms ease;
+    }
+    .zone-badge:hover { background: #F97316; color: white; }
+
+    /* === FOCUS STATES === */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #F97316;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .delay-1, .delay-2, .delay-3, .delay-4 { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAVBAR STICKY
+═══════════════════════════════════════ -->
+<header class="navbar fixed top-0 left-0 right-0 z-50 bg-navy-900/90 border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5 flex-shrink-0">
+      <div class="relative pulse-ring w-9 h-9 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+        <!-- Lock icon -->
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V7a4.5 4.5 0 10-9 0v3.5M5 10.5h14a1 1 0 011 1V20a1 1 0 01-1 1H5a1 1 0 01-1-1v-8.5a1 1 0 011-1z"/>
+        </svg>
+      </div>
+      <div>
+        <span class="font-heading font-800 text-white text-base leading-tight block">Pages Services</span>
+        <span class="text-orange-400 text-xs font-body font-500 leading-tight block">Villeneuve-la-Rivière · 66</span>
+      </div>
+    </a>
+
+    <!-- Nav center — hidden on mobile -->
+    <nav class="hidden md:flex items-center gap-6 text-sm text-white/70 font-body font-500">
+      <a href="#services" class="hover:text-white transition-colors duration-150">Services</a>
+      <a href="#avis" class="hover:text-white transition-colors duration-150">Avis clients</a>
+      <a href="#zone" class="hover:text-white transition-colors duration-150">Zone</a>
+      <a href="#contact" class="hover:text-white transition-colors duration-150">Contact</a>
+    </nav>
+
+    <!-- CTA -->
+    <a href="tel:+33625746099" aria-label="Appeler Pages Services" class="btn-primary flex items-center gap-2 px-4 py-2.5 rounded-lg font-heading font-700 text-white text-sm flex-shrink-0">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
+      </svg>
+      <span class="hidden sm:inline">Appeler maintenant</span>
+      <span class="sm:hidden">Appeler</span>
+    </a>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero-bg min-h-screen flex items-center pt-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 lg:py-28 w-full">
+    <div class="max-w-3xl">
+
+      <!-- Badge urgence -->
+      <div class="fade-up delay-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-orange-500/40 bg-orange-500/10 mb-6" style="animation: badge-glow 2.5s ease infinite;">
+        <span class="w-2 h-2 rounded-full bg-orange-400 flex-shrink-0 animate-pulse"></span>
+        <span class="text-orange-300 text-xs font-body font-600 uppercase tracking-widest">Disponible Lun–Sam 24h/24</span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="fade-up delay-1 font-heading font-900 text-white leading-[1.05] mb-5">
+        <span class="block text-4xl sm:text-5xl lg:text-6xl">Votre serrurier de confiance</span>
+        <span class="block text-4xl sm:text-5xl lg:text-6xl mt-1">
+          à <span class="text-orange-400">Perpignan</span>
+        </span>
+        <span class="block text-xl sm:text-2xl lg:text-3xl font-700 text-white/60 mt-3">& Villeneuve-la-Rivière</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="fade-up delay-2 font-body text-white/70 text-lg sm:text-xl leading-relaxed max-w-xl mb-8">
+        Serrurier certifié et électricien diplômé. Dépannage urgence, ouverture de porte, changement de serrure, installation électrique. Tarifs transparents, intervention rapide.
+      </p>
+
+      <!-- CTAs -->
+      <div class="fade-up delay-3 flex flex-col sm:flex-row gap-3 mb-12">
+        <a href="tel:+33625746099" class="btn-primary inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl font-heading font-700 text-white text-base">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
+          </svg>
+          Appeler maintenant — Urgence
+        </a>
+        <a href="#contact" class="btn-ghost inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl font-heading font-700 text-white text-base">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Devis gratuit
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="fade-up delay-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="stat-card rounded-xl p-4 text-center">
+          <div class="font-heading font-900 text-orange-400 text-2xl">5/5</div>
+          <div class="text-white/50 text-xs font-body mt-1">Note Google</div>
+        </div>
+        <div class="stat-card rounded-xl p-4 text-center">
+          <div class="font-heading font-900 text-orange-400 text-2xl">21+</div>
+          <div class="text-white/50 text-xs font-body mt-1">Avis vérifiés</div>
+        </div>
+        <div class="stat-card rounded-xl p-4 text-center">
+          <div class="font-heading font-900 text-orange-400 text-2xl">6 min</div>
+          <div class="text-white/50 text-xs font-body mt-1">Réponse moy.</div>
+        </div>
+        <div class="stat-card rounded-xl p-4 text-center">
+          <div class="font-heading font-900 text-orange-400 text-2xl">2</div>
+          <div class="text-white/50 text-xs font-body mt-1">Certifications</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     URGENCE STRIP
+═══════════════════════════════════════ -->
+<div class="urgence-strip py-3 px-4">
+  <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-6 text-white text-sm font-body font-600">
+    <span class="flex items-center gap-2">
+      <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 1C6.48 1 2 5.48 2 11c0 3.86 2.12 7.22 5.25 9.01L12 23l4.75-2.99C19.88 18.22 22 14.86 22 11c0-5.52-4.48-10-10-10zm1 15h-2v-2h2v2zm0-4h-2V7h2v5z"/>
+      </svg>
+      Urgence 24h/24 Lun–Sam
+    </span>
+    <span class="flex items-center gap-2">
+      <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      Devis gratuit & sans engagement
+    </span>
+    <span class="flex items-center gap-2">
+      <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+      </svg>
+      Note 5/5 — Clients satisfaits
+    </span>
+    <span class="flex items-center gap-2">
+      <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+      </svg>
+      Artisan certifié & assuré
+    </span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════ -->
+<section id="services" class="bg-white py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <p class="section-label text-orange-500 text-xs font-body font-600 uppercase mb-3">Ce que je fais</p>
+      <h2 class="font-heading font-900 text-navy-900 text-3xl sm:text-4xl leading-tight">Mes services à votre domicile</h2>
+      <p class="font-body text-navy-700/60 text-lg mt-4 max-w-xl mx-auto">Serrurerie, électricité, multi-services — un seul artisan certifié pour tous vos besoins.</p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Serrurerie -->
+      <div class="service-card bg-white border border-slate-200 rounded-2xl p-7 cursor-default">
+        <div class="icon-circle w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
+          <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V7a4.5 4.5 0 10-9 0v3.5M5 10.5h14a1 1 0 011 1V20a1 1 0 01-1 1H5a1 1 0 01-1-1v-8.5a1 1 0 011-1z"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-700 text-navy-900 text-xl mb-2">Serrurerie</h3>
+        <p class="font-body text-navy-700/60 text-sm leading-relaxed mb-5">Ouverture de porte sans casse, changement de serrure, installation de porte blindée, réparation après effraction.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-sm font-body text-navy-700/80">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Ouverture de porte urgence
+          </li>
+          <li class="flex items-center gap-2 text-sm font-body text-navy-700/80">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Changement & blindage serrure
+          </li>
+          <li class="flex items-center gap-2 text-sm font-body text-navy-700/80">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Réparation après effraction
+          </li>
+        </ul>
+      </div>
+
+      <!-- Électricité -->
+      <div class="service-card bg-navy-900 border border-navy-800 rounded-2xl p-7 cursor-default">
+        <div class="w-14 h-14 rounded-2xl bg-orange-500/20 flex items-center justify-center mb-5">
+          <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-700 text-white text-xl mb-2">Électricité</h3>
+        <p class="font-body text-white/50 text-sm leading-relaxed mb-5">Installation, dépannage et mise aux normes électriques. CAP IEE — diplômé et qualifié pour tous vos travaux d'électricité.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-sm font-body text-white/70">
+            <svg class="w-4 h-4 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Installation & raccordements
+          </li>
+          <li class="flex items-center gap-2 text-sm font-body text-white/70">
+            <svg class="w-4 h-4 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Dépannage tableau électrique
+          </li>
+          <li class="flex items-center gap-2 text-sm font-body text-white/70">
+            <svg class="w-4 h-4 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Mise aux normes (NF C 15-100)
+          </li>
+        </ul>
+      </div>
+
+      <!-- Multi-services -->
+      <div class="service-card bg-white border border-slate-200 rounded-2xl p-7 cursor-default sm:col-span-2 lg:col-span-1">
+        <div class="icon-circle w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
+          <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-700 text-navy-900 text-xl mb-2">Multi-services</h3>
+        <p class="font-body text-navy-700/60 text-sm leading-relaxed mb-5">Petits travaux de plomberie, menuiserie, montage de meubles, états des lieux et aide à la personne. Un artisan polyvalent à votre service.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-sm font-body text-navy-700/80">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Plomberie & menuiserie
+          </li>
+          <li class="flex items-center gap-2 text-sm font-body text-navy-700/80">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Montage meubles & aménagement
+          </li>
+          <li class="flex items-center gap-2 text-sm font-body text-navy-700/80">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            États des lieux
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pricing note -->
+    <div class="mt-10 bg-orange-50 border border-orange-200 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-heading font-700 text-navy-900">Tarifs clairs, annoncés à l'avance</p>
+        <p class="font-body text-navy-700/60 text-sm mt-1">Forfaits transparents pour les dépannages urgents. Devis personnalisé gratuit pour les travaux d'installation ou de rénovation. Pas de mauvaises surprises.</p>
+      </div>
+      <a href="#contact" class="btn-primary flex-shrink-0 px-5 py-2.5 rounded-xl font-heading font-700 text-white text-sm whitespace-nowrap">
+        Obtenir un devis
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CERTIFICATIONS
+═══════════════════════════════════════ -->
+<section class="bg-navy-950 py-14">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 bg-orange-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="font-heading font-700 text-white text-sm">Diplôme Serrurier</p>
+          <p class="text-white/40 text-xs font-body">Dépanneur certifié</p>
+        </div>
+      </div>
+
+      <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
+
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 bg-orange-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="font-heading font-700 text-white text-sm">CAP IEE</p>
+          <p class="text-white/40 text-xs font-body">Installation électrique</p>
+        </div>
+      </div>
+
+      <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
+
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 bg-orange-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+        </div>
+        <div>
+          <p class="font-heading font-700 text-white text-sm">EURL Enregistrée</p>
+          <p class="text-white/40 text-xs font-body">RCS Perpignan · SIRET vérifié</p>
+        </div>
+      </div>
+
+      <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
+
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 bg-orange-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="font-heading font-700 text-white text-sm">Réponse en 6 min</p>
+          <p class="text-white/40 text-xs font-body">Temps moyen constaté</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     AVIS CLIENTS
+═══════════════════════════════════════ -->
+<section id="avis" class="bg-slate-50 py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-14">
+      <p class="section-label text-orange-500 text-xs font-body font-600 uppercase mb-3">Ce qu'ils disent</p>
+      <h2 class="font-heading font-900 text-navy-900 text-3xl sm:text-4xl leading-tight">Clients satisfaits</h2>
+      <div class="flex items-center justify-center gap-1.5 mt-4">
+        <div class="flex gap-1">
+          <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <span class="font-heading font-700 text-navy-900 text-lg ml-1">5/5</span>
+        <span class="text-navy-700/50 text-sm font-body">— Note moyenne</span>
+      </div>
+    </div>
+
+    <!-- Stars helper macro (5 stars inline) -->
+    <style>
+      .stars { display:flex; gap:2px; }
+      .stars svg { width:14px; height:14px; color:#FBBF24; fill:currentColor; flex-shrink:0; }
+    </style>
+
+    <!-- Featured review — highlight -->
+    <div class="review-card bg-navy-900 rounded-2xl p-7 border border-navy-800 shadow-sm mb-6 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-48 h-48 bg-orange-500/5 rounded-full translate-x-16 -translate-y-16 pointer-events-none"></div>
+      <div class="relative">
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div class="stars">
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <!-- Google G -->
+          <svg class="w-5 h-5 flex-shrink-0 opacity-60" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Avis Google">
+            <path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.3 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-9 20-20 0-1.3-.1-2.7-.4-4z"/>
+            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z"/>
+            <path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.5 35.5 26.9 36.5 24 36.5c-5.2 0-9.6-3.4-11.2-8.1l-6.5 5C9.7 39.7 16.4 44 24 44z"/>
+            <path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l.1-.1 6.2 5.2C36.9 36.6 44 31 44 24c0-1.3-.1-2.7-.4-4z"/>
+          </svg>
+        </div>
+        <blockquote class="font-body text-white/80 text-base leading-relaxed italic mb-5">
+          "Incroyable ! Demande d'urgence faite, facturé comme une journée classique. Monsieur trouve la solution sans vous ruiner ! Professionnel rare de nos jours. Je suis à 1 000 km et il a réagi sans souci pour me solutionner le souci de ma porte de mon logement locatif. Merci ! Je recommande fortement."
+        </blockquote>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 bg-orange-500/30 rounded-full flex items-center justify-center font-heading font-700 text-orange-300 text-sm flex-shrink-0">S</div>
+          <div>
+            <p class="font-body font-600 text-white text-sm">Sarah M. <span class="text-orange-400 text-xs font-normal">· Local Guide Google</span></p>
+            <p class="text-white/40 text-xs font-body">Novembre 2025 · Avis Google</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid 3 cols -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+
+      <!-- Maxime C. -->
+      <div class="review-card bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="stars">
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <svg class="w-4 h-4 opacity-50 flex-shrink-0" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.3 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-9 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.5 35.5 26.9 36.5 24 36.5c-5.2 0-9.6-3.4-11.2-8.1l-6.5 5C9.7 39.7 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l.1-.1 6.2 5.2C36.9 36.6 44 31 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
+        </div>
+        <blockquote class="font-body text-navy-700/80 text-sm leading-relaxed italic flex-1">
+          "Intervention rapide, très professionnel et surtout très honnête sur les tarifs. Il a pris le temps d'expliquer le problème avant d'intervenir. Travail propre et efficace."
+        </blockquote>
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 bg-navy-100 rounded-full flex items-center justify-center font-heading font-700 text-navy-700 text-xs flex-shrink-0">M</div>
+          <div>
+            <p class="font-body font-600 text-navy-900 text-xs">Maxime C.</p>
+            <p class="text-navy-700/40 text-xs font-body">Mars 2025 · Google</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ducros Jennifer -->
+      <div class="review-card bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="stars"><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <svg class="w-4 h-4 opacity-50 flex-shrink-0" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.3 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-9 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.5 35.5 26.9 36.5 24 36.5c-5.2 0-9.6-3.4-11.2-8.1l-6.5 5C9.7 39.7 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l.1-.1 6.2 5.2C36.9 36.6 44 31 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
+        </div>
+        <blockquote class="font-body text-navy-700/80 text-sm leading-relaxed italic flex-1">
+          "Vincent est toujours disponible rapidement et réactif. Son travail est minutieux. Nous avons fait appel à ses services plusieurs fois et jamais déçus ! Je recommande vivement."
+        </blockquote>
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 bg-navy-100 rounded-full flex items-center justify-center font-heading font-700 text-navy-700 text-xs flex-shrink-0">J</div>
+          <div>
+            <p class="font-body font-600 text-navy-900 text-xs">Jennifer D. <span class="text-orange-500 text-xs font-normal">· Local Guide</span></p>
+            <p class="text-navy-700/40 text-xs font-body">Fév. 2025 · Google</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cruz Laurent -->
+      <div class="review-card bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="stars"><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <svg class="w-4 h-4 opacity-50 flex-shrink-0" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.3 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-9 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.5 35.5 26.9 36.5 24 36.5c-5.2 0-9.6-3.4-11.2-8.1l-6.5 5C9.7 39.7 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l.1-.1 6.2 5.2C36.9 36.6 44 31 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
+        </div>
+        <blockquote class="font-body text-navy-700/80 text-sm leading-relaxed italic flex-1">
+          "Mr Pages a été très réactif, surtout pour un premier janvier. Encore merci pour sa gentillesse et sa bienveillance. Nous recommandons sans hésiter. — Laurent & Laura"
+        </blockquote>
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 bg-navy-100 rounded-full flex items-center justify-center font-heading font-700 text-navy-700 text-xs flex-shrink-0">L</div>
+          <div>
+            <p class="font-body font-600 text-navy-900 text-xs">Cruz Laurent</p>
+            <p class="text-navy-700/40 text-xs font-body">Janv. 2025 · Google</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vivien D. -->
+      <div class="review-card bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="stars"><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <svg class="w-4 h-4 opacity-50 flex-shrink-0" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.3 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-9 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.5 35.5 26.9 36.5 24 36.5c-5.2 0-9.6-3.4-11.2-8.1l-6.5 5C9.7 39.7 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l.1-.1 6.2 5.2C36.9 36.6 44 31 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
+        </div>
+        <blockquote class="font-body text-navy-700/80 text-sm leading-relaxed italic flex-1">
+          "Intervention rapide en pleine soirée sur Perpignan. Artisan très pro qui ne profite pas de l'urgence pour gonfler ses tarifs. Travail propre et efficace."
+        </blockquote>
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 bg-navy-100 rounded-full flex items-center justify-center font-heading font-700 text-navy-700 text-xs flex-shrink-0">V</div>
+          <div>
+            <p class="font-body font-600 text-navy-900 text-xs">Vivien D.</p>
+            <p class="text-navy-700/40 text-xs font-body">Fév. 2025 · Google</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guillaume D. -->
+      <div class="review-card bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="stars"><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <svg class="w-4 h-4 opacity-50 flex-shrink-0" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.3 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-9 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.5 35.5 26.9 36.5 24 36.5c-5.2 0-9.6-3.4-11.2-8.1l-6.5 5C9.7 39.7 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l.1-.1 6.2 5.2C36.9 36.6 44 31 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
+        </div>
+        <blockquote class="font-body text-navy-700/80 text-sm leading-relaxed italic flex-1">
+          "Vincent a été ponctuel, professionnel et à l'écoute de mes besoins. Le résultat est impeccable. Je recommande vivement ses services ! Toujours PARFAIT !"
+        </blockquote>
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 bg-navy-100 rounded-full flex items-center justify-center font-heading font-700 text-navy-700 text-xs flex-shrink-0">G</div>
+          <div>
+            <p class="font-body font-600 text-navy-900 text-xs">Guillaume D.</p>
+            <p class="text-navy-700/40 text-xs font-body">Déc. 2025 · Google</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vanessa P. -->
+      <div class="review-card bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="stars"><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <svg class="w-4 h-4 opacity-50 flex-shrink-0" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.3 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-9 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.5 35.5 26.9 36.5 24 36.5c-5.2 0-9.6-3.4-11.2-8.1l-6.5 5C9.7 39.7 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l.1-.1 6.2 5.2C36.9 36.6 44 31 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
+        </div>
+        <blockquote class="font-body text-navy-700/80 text-sm leading-relaxed italic flex-1">
+          "Monsieur Pagès a des doigts en or, toujours soucieux du petit détail. C'est très appréciable. Merci encore pour vos prestations."
+        </blockquote>
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 bg-navy-100 rounded-full flex items-center justify-center font-heading font-700 text-navy-700 text-xs flex-shrink-0">V</div>
+          <div>
+            <p class="font-body font-600 text-navy-900 text-xs">Vanessa P.</p>
+            <p class="text-navy-700/40 text-xs font-body">Déc. 2025 · Google</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA voir tous les avis -->
+    <div class="text-center mt-8">
+      <a href="https://www.google.com/maps/place/Pages+Services+Serrurier/@42.6948926,2.7965652" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-200 bg-white hover:border-orange-300 hover:shadow-sm transition-all duration-150 font-body font-600 text-navy-700 text-sm">
+        <svg class="w-4 h-4" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.3 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-9 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.5 35.5 26.9 36.5 24 36.5c-5.2 0-9.6-3.4-11.2-8.1l-6.5 5C9.7 39.7 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l.1-.1 6.2 5.2C36.9 36.6 44 31 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
+        Voir les 21 avis sur Google Maps
+        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     ZONE D'INTERVENTION
+═══════════════════════════════════════ -->
+<section id="zone" class="bg-white py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Left: text -->
+      <div>
+        <p class="section-label text-orange-500 text-xs font-body font-600 uppercase mb-3">Intervention locale</p>
+        <h2 class="font-heading font-900 text-navy-900 text-3xl sm:text-4xl leading-tight mb-5">
+          Perpignan et les<br/>Pyrénées-Orientales
+        </h2>
+        <p class="font-body text-navy-700/60 text-lg leading-relaxed mb-8">
+          Basé à Villeneuve-la-Rivière, j'interviens rapidement à Perpignan et dans toutes les communes alentour. Dépannage urgent ou travaux planifiés — je me déplace chez vous.
+        </p>
+
+        <!-- Cities grid -->
+        <div class="flex flex-wrap gap-2">
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Perpignan</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-orange-300 bg-orange-50 text-sm font-body font-600 text-orange-600 cursor-default">Villeneuve-la-Rivière</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Canet-en-Roussillon</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Saint-Estève</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Le Soler</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Rivesaltes</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Thuir</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Cabestany</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Toulouges</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Bompas</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Pia</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">Argelès-sur-Mer</span>
+          <span class="zone-badge px-3 py-1.5 rounded-full border border-slate-200 text-sm font-body text-navy-700 cursor-default">& alentours 66</span>
+        </div>
+      </div>
+
+      <!-- Right: Map embed -->
+      <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm h-72 sm:h-80">
+        <iframe
+          title="Zone d'intervention Pages Services — Perpignan"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93284.3!2d2.7965652!3d42.6948926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x222875c59a2579f3%3A0x33fb2891392f77ce!2sPages%20Services%20Serrurier!5e0!3m2!1sfr!2sfr!4v1"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     À PROPOS — VINCENT PAGES
+═══════════════════════════════════════ -->
+<section class="bg-navy-900 py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Photo placeholder -->
+      <div class="order-2 lg:order-1">
+        <div class="relative rounded-2xl overflow-hidden bg-navy-800 aspect-[4/3] flex items-center justify-center border border-white/10">
+          <!-- Placeholder avec initiales -->
+          <div class="text-center">
+            <div class="w-24 h-24 bg-orange-500/20 border-2 border-orange-500/30 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="font-heading font-900 text-orange-400 text-3xl">VP</span>
+            </div>
+            <p class="text-white/30 text-sm font-body">Photo Vincent Pages</p>
+            <p class="text-white/20 text-xs font-body mt-1">À remplacer par une vraie photo</p>
+          </div>
+          <!-- Decorative gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/60 to-transparent pointer-events-none"></div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="order-1 lg:order-2">
+        <p class="section-label text-orange-400 text-xs font-body font-600 uppercase mb-3">L'artisan</p>
+        <h2 class="font-heading font-900 text-white text-3xl sm:text-4xl leading-tight mb-5">
+          Vincent Pages,<br/>votre artisan local
+        </h2>
+        <p class="font-body text-white/60 text-lg leading-relaxed mb-6">
+          Diplômé serrurier dépanneur et titulaire du CAP IEE, j'ai créé Pages Services en 2024 pour proposer un service artisanal de proximité à Villeneuve-la-Rivière et dans tout le département.
+        </p>
+        <p class="font-body text-white/60 text-lg leading-relaxed mb-8">
+          Vous parlez directement avec moi — pas de centre d'appels, pas de sous-traitant. Je me déplace avec tout le matériel nécessaire pour résoudre votre problème en une seule intervention.
+        </p>
+
+        <!-- Highlights -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="font-body text-white/70">Artisan certifié — diplôme reconnu</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="font-body text-white/70">Identité vérifiée, entreprise enregistrée RCS Perpignan</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="font-body text-white/70">Contact direct — réponse en 6 min en moyenne</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="font-body text-white/70">Matériel professionnel — intervention résolue en 1 passage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CTA FINAL / FORMULAIRE DEVIS
+═══════════════════════════════════════ -->
+<section id="contact" class="bg-slate-50 py-20 sm:py-28">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <p class="section-label text-orange-500 text-xs font-body font-600 uppercase mb-3">Demande rapide</p>
+      <h2 class="font-heading font-900 text-navy-900 text-3xl sm:text-4xl leading-tight">Obtenir votre devis gratuit</h2>
+      <p class="font-body text-navy-700/60 text-lg mt-4 max-w-xl mx-auto">
+        Décrivez votre besoin, je vous réponds en moins de 10 minutes. Devis gratuit, sans engagement.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-8">
+
+      <!-- Contacts rapides (col 2) -->
+      <div class="lg:col-span-2 flex flex-col gap-4">
+
+        <a href="tel:+33625746099" class="btn-primary flex items-center gap-3 p-5 rounded-2xl font-body font-600 text-white">
+          <div class="w-11 h-11 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm text-white/70">Appel direct urgence</div>
+            <div class="font-heading font-700 text-lg">06 25 74 60 99</div>
+          </div>
+        </a>
+
+        <a href="https://wa.me/33625746099" target="_blank" rel="noopener" class="flex items-center gap-3 p-5 rounded-2xl border border-slate-200 bg-white hover:border-green-400 transition-colors duration-150 font-body font-600 text-navy-800">
+          <div class="w-11 h-11 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M11.99 2C6.46 2 2 6.46 2 12c0 1.73.46 3.36 1.26 4.77L2 22l5.36-1.25C8.68 21.54 10.3 22 12 22c5.54 0 10-4.46 10-10S17.54 2 11.99 2zm.01 18c-1.53 0-3.01-.41-4.3-1.18l-.31-.18-3.18.74.76-3.09-.2-.32A7.97 7.97 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs text-navy-700/50">WhatsApp</div>
+            <div class="font-heading font-700">Message rapide</div>
+          </div>
+        </a>
+
+        <div class="p-5 rounded-2xl border border-slate-200 bg-white text-sm font-body text-navy-700/60">
+          <p class="font-600 text-navy-900 mb-2">Disponibilité</p>
+          <div class="space-y-1 text-xs">
+            <div class="flex justify-between"><span>Lun – Sam</span><span class="font-600 text-green-600">24h/24</span></div>
+            <div class="flex justify-between"><span>Dimanche</span><span class="font-600 text-amber-500">Sur demande</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GHL Form (col 3) -->
+      <div class="lg:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" style="min-height:780px">
+
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/TxJpsge72vT3ckmik4Cm"
+          style="width:100%;height:100%;border:none;border-radius:3px"
+          id="inline-TxJpsge72vT3ckmik4Cm"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Form 27"
+          data-height="752"
+          data-layout-iframe-id="inline-TxJpsge72vT3ckmik4Cm"
+          data-form-id="TxJpsge72vT3ckmik4Cm"
+          title="Demande de devis — Pages Services">
+        </iframe>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer class="bg-navy-950 pt-14 pb-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+
+      <!-- Brand -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-9 h-9 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V7a4.5 4.5 0 10-9 0v3.5M5 10.5h14a1 1 0 011 1V20a1 1 0 01-1 1H5a1 1 0 01-1-1v-8.5a1 1 0 011-1z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="font-heading font-800 text-white text-base block leading-tight">Pages Services</span>
+            <span class="text-orange-400 text-xs font-body font-500">Serrurier & Électricien</span>
+          </div>
+        </div>
+        <p class="font-body text-white/40 text-sm leading-relaxed max-w-xs">
+          Artisan serrurier et électricien certifié, au service des particuliers et professionnels de Perpignan et des Pyrénées-Orientales.
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <p class="font-heading font-700 text-white text-sm mb-4">Services</p>
+        <ul class="space-y-2 font-body text-white/40 text-sm">
+          <li>Ouverture de porte urgence</li>
+          <li>Changement de serrure</li>
+          <li>Porte blindée</li>
+          <li>Installation électrique</li>
+          <li>Dépannage électrique</li>
+          <li>Petits travaux multi-services</li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="font-heading font-700 text-white text-sm mb-4">Contact</p>
+        <ul class="space-y-3 font-body text-white/40 text-sm">
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span>38 Rue Le Carignan<br/>66610 Villeneuve-la-Rivière</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+            <a href="tel:+33625746099" class="hover:text-orange-400 transition-colors">06 25 74 60 99</a>
+          </li>
+          <li>
+            <div class="flex gap-3 mt-2">
+              <a href="https://www.instagram.com/pages_services/" target="_blank" rel="noopener" aria-label="Instagram Pages Services" class="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center hover:bg-orange-500/20 transition-colors">
+                <svg class="w-4 h-4 text-white/60" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61561576119401" target="_blank" rel="noopener" aria-label="Facebook Pages Services" class="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center hover:bg-orange-500/20 transition-colors">
+                <svg class="w-4 h-4 text-white/60" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <p class="font-body text-white/30 text-xs">
+        © 2025 Pages Services EURL — SIRET 930 862 933 00015 — RCS Perpignan
+      </p>
+      <div class="flex gap-4 text-white/30 text-xs font-body">
+        <a href="#" class="hover:text-white/60 transition-colors">Mentions légales</a>
+        <a href="#" class="hover:text-white/60 transition-colors">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+
+<!-- Mobile sticky CTA bar -->
+<div class="fixed bottom-0 left-0 right-0 z-40 sm:hidden bg-navy-950/95 backdrop-blur border-t border-white/10 px-4 py-3 flex gap-2">
+  <a href="tel:+33625746099" class="btn-primary flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-heading font-700 text-white text-sm">
+    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
+    </svg>
+    Appeler
+  </a>
+  <a href="#contact" class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-heading font-700 text-white text-sm border border-white/20">
+    Devis gratuit
+  </a>
+</div>
+<!-- spacer pour la bar mobile -->
+<div class="h-16 sm:hidden"></div>
+
+</body>
+</html>
